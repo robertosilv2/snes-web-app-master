@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFZQQ4RP4R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-PFZQQ4RP4R');
-</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W2T5XVS8');</script>
-<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNES Web App - MVP</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Matomo Tag -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* Los métodos de rastreo deben llamarse antes de trackPageView */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+         var u="https://snes-web-app-master.matomo.cloud/"; 
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']); // 1 es el ID por defecto del primer sitio
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://cdn.matomo.cloud/snes-web-app-master.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2T5XVS8"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <header>
+     <header>
         <h1>Plataforma de Preservación SNES</h1>
-        <p>Proyecto Integrador - Maestría en TI</p>
+        <p>Servisios Web - Roberto Silva</p>
     </header>
-
+  
     <main>
         <section id="controls">
-            <!-- Este selector se llenará dinámicamente consumiendo nuestra API -->
-            <select id="romSelector">
+              <select id="romSelector">
                 <option value="">Consultando servidor...</option>
             </select>
             <button id="btnLoad">Cargar Juego</button>
         </section>
 
-        <!-- El div donde el script inyectará el elemento <canvas> y el motor Wasm -->
         <div id="game-container"></div>
     </main>
-
-    <!-- Lógica de cliente en Vanilla JS -->
     <script src="app.js"></script>
 </body>
 </html>

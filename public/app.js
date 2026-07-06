@@ -38,18 +38,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.EJS_gameUrl = `/roms/${selectedRom}`; 
         window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
 
-        // ==========================================
-        // TELEMETRÍA GTM: ENVIAR DATOS AL DATALAYER
-        // ==========================================
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'event': 'rom_loaded',          // Nombre del evento que leerá Tag Manager
-            'rom_name': selectedRom,        // Dato dinámico del juego
-            'category': 'Emulation'
-        });
-        console.log(`📡 Evento 'rom_loaded' empujado al dataLayer para: ${selectedRom}`);
+           if (typeof _paq !== 'undefined') {
+            _paq.push(['trackEvent', 'Emulacion', 'Juego_Cargado', selectedRom]);
+            console.log(`📡 Evento enviado a Matomo: Juego_Cargado -> ${selectedRom}`);
+        }
 
-        // Inyección dinámica del script de carga del emulador
         const script = document.createElement('script');
         script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
         document.body.appendChild(script);
