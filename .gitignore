@@ -10,8 +10,8 @@ package-lock.json
 Thumbs.db
 
 # ROMs de juegos (Protección de Copyright)
-# Ignoramos todos los archivos dentro de roms, pero mantenemos la carpeta
 public/roms/*
 !public/roms/.gitkeep
+
 # Excepción para subir solo un juego de prueba a producción
 !public/roms/SureInstinct PAL (v1.0.2).sfc
