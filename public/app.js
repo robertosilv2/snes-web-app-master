@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 option.textContent = rom;
                 romSelector.appendChild(option);
             });
+            btnLoad.disabled = false;
         } else {
             romSelector.innerHTML = '<option value="">No se encontraron ROMs en el servidor</option>';
             btnLoad.disabled = true;
@@ -26,27 +27,34 @@ document.addEventListener('DOMContentLoaded', async () => {
         romSelector.innerHTML = '<option value="">Error de conexión con el backend</option>';
     }
 
-// 2. Lógica de instanciación del emulador
+    // 2. Lógica de instanciación del emulador
     btnLoad.addEventListener('click', () => {
         const selectedRom = romSelector.value;
         if (!selectedRom) return;
 
+        // Resetear el contenedor en caso de que ya hubiera un juego corriendo
         gameContainer.innerHTML = '';
 
+        // Variables globales requeridas por la arquitectura de EmulatorJS
         window.EJS_player = '#game-container';
         window.EJS_core = 'snes'; 
         window.EJS_gameUrl = `/roms/${selectedRom}`; 
         window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
 
-           if (typeof _paq !== 'undefined') {
+        // ==========================================
+        // TELEMETRÍA MATOMO: EVENTO PERSONALIZADO
+        // ==========================================
+        if (typeof _paq !== 'undefined') {
             _paq.push(['trackEvent', 'Emulacion', 'Juego_Cargado', selectedRom]);
             console.log(`📡 Evento enviado a Matomo: Juego_Cargado -> ${selectedRom}`);
         }
 
+        // Inyección dinámica del script de carga del emulador
         const script = document.createElement('script');
         script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
         document.body.appendChild(script);
         
         btnLoad.textContent = 'Juego en ejecución...';
         btnLoad.disabled = true;
-    });
+    }); // <-- Probablemente esta llave y paréntesis se habían borrado
+}); // <-- O estos de aquí abajo
