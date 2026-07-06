@@ -13,5 +13,6 @@ Thumbs.db
 public/roms/*
 !public/roms/.gitkeep
 
-# Excepción para subir solo un juego de prueba a producción
-!public/roms/SureInstinct PAL (v1.0.2).sfc
+# Excepciones permitidas para pruebas de emulación en producción
+!public/roms/*.smc
+!public/roms/*.sfc
