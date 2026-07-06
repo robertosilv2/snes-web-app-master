@@ -9,13 +9,12 @@
     <!-- Matomo Tag -->
     <script>
       var _paq = window._paq = window._paq || [];
-      /* Los métodos de rastreo deben llamarse antes de trackPageView */
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {
          var u="https://snes-web-app-master.matomo.cloud/"; 
         _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '1']); // 1 es el ID por defecto del primer sitio
+        _paq.push(['setSiteId', '1']); 
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.async=true; g.src='https://cdn.matomo.cloud/snes-web-app-master.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
       })();
