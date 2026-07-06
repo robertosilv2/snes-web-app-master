@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const romSelector = document.getElementById('romSelector');
     const btnLoad = document.getElementById('btnLoad');
+    const btnStop = document.getElementById('btnStop'); 
     const gameContainer = document.getElementById('game-container');
 
     try {
@@ -39,14 +40,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (typeof _paq !== 'undefined') {
             _paq.push(['trackEvent', 'Emulacion', 'Juego_Cargado', selectedRom]);
-            console.log(`📡 Evento enviado a Matomo: Juego_Cargado -> ${selectedRom}`);
         }
 
         const script = document.createElement('script');
         script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
         document.body.appendChild(script);
         
-        btnLoad.textContent = 'Juego en ejecución...';
-        btnLoad.disabled = true;
-    }); 
-}); 
+        btnLoad.style.display = 'none'; 
+        romSelector.disabled = true;    
+        btnStop.style.display = 'inline-block'; 
+    });
+
+    btnStop.addEventListener('click', () => {
+        if (typeof _paq !== 'undefined') {
+            _paq.push(['trackEvent', 'Emulacion', 'Juego_Detenido', romSelector.value]);
+        }
+        window.location.reload();
+    });
+});

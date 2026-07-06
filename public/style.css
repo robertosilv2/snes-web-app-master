@@ -54,8 +54,6 @@ button:disabled {
     background-color: #555;
     cursor: not-allowed;
 }
-
-/* Dimensiones estándar de renderizado para no estirar los pixeles */
 #game-container {
     width: 640px; 
     height: 480px;
@@ -65,4 +63,10 @@ button:disabled {
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     overflow: hidden;
+}
+#btnStop {
+    background-color: #ff4757;
+}
+#btnStop:hover {
+    background-color: #ff6b81;
 }
