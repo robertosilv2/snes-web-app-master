@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNES Web App - MVP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Preservación SNES</h1>
+        <p>Proyecto Integrador - Maestría en TI</p>
+    </header>
+
+    <main>
+        <section id="controls">
+            <!-- Este selector se llenará dinámicamente consumiendo nuestra API -->
+            <select id="romSelector">
+                <option value="">Consultando servidor...</option>
+            </select>
+            <button id="btnLoad">Cargar Juego</button>
+        </section>
+
+        <!-- El div donde el script inyectará el elemento <canvas> y el motor Wasm -->
+        <div id="game-container"></div>
+    </main>
+
+    <!-- Lógica de cliente en Vanilla JS -->
+    <script src="app.js"></script>
+</body>
+</html>
